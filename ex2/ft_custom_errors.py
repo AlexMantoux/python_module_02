@@ -14,6 +14,12 @@ class WaterError(GardenError):
 
 
 def test_raising_errors() -> None:
+    """Test and demonstrate custom garden exception classes.
+
+    Shows how to raise and catch PlantError and WaterError
+    individually, and demonstrates that catching GardenError
+    catches all garden-related errors due to inheritance.
+    """
     print("=== Custom Garden Errors Demo ===\n")
     try:
         print("Testing PlantError...")
@@ -37,3 +43,7 @@ def test_raising_errors() -> None:
             raise error
         except GardenError as e:
             print(f"Caught a garden error: {e}")
+
+
+if __name__ == "__main__":
+    test_raising_errors()

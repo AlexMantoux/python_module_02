@@ -1,4 +1,11 @@
 def garden_operations() -> None:
+    """Demonstrate different types of errors that can occur
+    in garden operations.
+
+    This function contains operations that will raise different exceptions:
+    ValueError, ZeroDivisionError, FileNotFoundError, and KeyError.
+    It is intended to be called inside a try/except block.
+    """
     int("qwe")
 
     10 / 0
@@ -10,6 +17,13 @@ def garden_operations() -> None:
 
 
 def test_error_types() -> None:
+    """Test and demonstrate different types of Python exceptions.
+
+    Shows how to catch ValueError, ZeroDivisionError, FileNotFoundError,
+    and KeyError separately, and how to catch multiple error types
+    with a single except block. Demonstrates that the program
+    continues running after each error.
+    """
     print("=== Garden Error Types Demo ===")
     print()
     print("Testing ValueError...")
@@ -44,3 +58,7 @@ def test_error_types() -> None:
         print("Caught an error, but program continues!")
     print()
     print("All error types tested successfully!")
+
+
+if __name__ == "__main__":
+    test_error_types()

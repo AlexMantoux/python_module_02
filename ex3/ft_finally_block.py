@@ -1,8 +1,19 @@
 class WaterError(Exception):
+    """Error raised when a watering operation fails."""
     pass
 
 
 def test_watering_system(plant_list: list[str]) -> None:
+    """Test the watering system with a list of plants.
+
+    Opens the watering system, attempts to water each plant,
+    and always closes the system in a finally block even if
+    an error occurs.
+
+    Args:
+        plant_list: A list of plant names to water. If a plant
+                    is None, a WaterError is raised.
+    """
     print("Opening watering system")
     try:
         for plant in plant_list:
@@ -16,7 +27,12 @@ def test_watering_system(plant_list: list[str]) -> None:
         print("Watering completed successfully!")
 
 
-def water_plants(plant_list) -> None:
+def water_plants(plant_list: list[str]) -> None:
+    """Water all plants in the given list using the watering system.
+
+    Args:
+        plant_list: A list of plant names to water.
+    """
     print("=== Garden Watering System ===")
     print()
     test_watering_system(plant_list)
