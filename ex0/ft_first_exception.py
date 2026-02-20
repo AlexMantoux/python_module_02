@@ -1,4 +1,4 @@
-def check_temperature(temp_str: str) -> None:
+def check_temperature(temp_str: str) -> int | None:
     try:
         temp: int = int(temp_str)
         if (temp < 0):
@@ -7,6 +7,7 @@ def check_temperature(temp_str: str) -> None:
             print(f"Error: {temp}°C is too hot for plants (max 40°C)")
         else:
             print(f"Temperature {temp}°C is perfect for plants!")
+        return temp
     except ValueError:
         print(f"Error: '{temp_str}' is not a valid number")
 

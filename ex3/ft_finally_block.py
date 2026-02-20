@@ -1,38 +1,33 @@
-class WateringError(Exception):
+class WaterError(Exception):
     pass
 
 
 def test_watering_system(plant_list: list[str]) -> None:
-    print("Testing normal watering...")
+    print("Opening watering system")
     try:
         for plant in plant_list:
+            if plant is None:
+                raise WaterError("Error: Cannot water None - invalid plant!")
             print(f"Watering {plant}")
-    except WateringError as e:
-        print(f"Caught ValueError: {e}")
+    except WaterError as e:
+        print(f"Caught WaterError: {e}")
     finally:
         print("Closing watering system (cleanup)")
         print("Watering completed successfully!")
 
-    print()
-    print("Testing with error...")
-    try:
-        for plant in plant_list:
-            print(f"Watering {plant}")
-            raise WateringError("Error: Cannot water None - invalid plant!")
-    except WateringError as e:
-        print(f"{e}")
-    finally:
-        print("Closing watering system (cleanup)")
-        print()
-        print("Cleanup always happens, even with errors!")
-
 
 def water_plants(plant_list) -> None:
+    print("=== Garden Watering System ===")
+    print()
     test_watering_system(plant_list)
 
 
-def main() -> None:
-    plant_list = ["tomato", "lettuce", "carrots"]
-    print("=== Garden Watering System ===")
+if __name__ == "__main__":
+    plant_list1: list[str] = ["tomato", "lettuce", "carrots"]
+    plant_list2: list[str] = ["tomato", None, "carrots"]
+    print("Testing normal watering...")
+    water_plants(plant_list1)
+    print("Testing with error...")
+    water_plants(plant_list2)
     print()
-    water_plants(plant_list)
+    print("Cleanup always happens, even with errors!")

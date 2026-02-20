@@ -1,16 +1,19 @@
 class GardenError(Exception):
+    """A basic error for garden problems."""
     pass
 
 
 class PlantError(GardenError):
+    """For problems with plants."""
     pass
 
 
 class WaterError(GardenError):
+    """For problems with watering."""
     pass
 
 
-def test_raising_errors():
+def test_raising_errors() -> None:
     print("=== Custom Garden Errors Demo ===\n")
     try:
         print("Testing PlantError...")
@@ -20,19 +23,17 @@ def test_raising_errors():
     print()
     try:
         print("Testing WaterError...")
-        raise WaterError("Tomato")
-    except WaterError as e:
-        print(f"Caught PlantError: {e}")
-    print()
-    try:
-        print("Testing catching all garden errors...")
-        try:
-            raise PlantError("The tomato plant is wilting!")
-        except GardenError as e:
-            print(f"Caught GardenError: {e}")
         raise WaterError("Not enough water in the tank!")
-    except GardenError as e:
-        print(f"Caught GardenError: {e}")
-
-
-test_raising_errors()
+    except WaterError as e:
+        print(f"Caught WaterError: {e}")
+    print()
+    print("Testing catching all garden errors...")
+    garden_errors = [
+        PlantError("The tomato plant is wilting!"),
+        WaterError("Not enough water in the tank!")
+    ]
+    for error in garden_errors:
+        try:
+            raise error
+        except GardenError as e:
+            print(f"Caught a garden error: {e}")

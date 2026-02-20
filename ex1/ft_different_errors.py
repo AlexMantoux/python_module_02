@@ -37,4 +37,10 @@ def test_error_types() -> None:
     except KeyError as e:
         print(f"Caught KeyError: {e}")
     print()
+    print("Testing multiple errors together...")
+    try:
+        garden_operations()
+    except (KeyError, FileNotFoundError, ZeroDivisionError, ValueError):
+        print("Caught an error, but program continues!")
+    print()
     print("All error types tested successfully!")
